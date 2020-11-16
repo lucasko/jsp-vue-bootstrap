@@ -280,10 +280,14 @@
           
           </tbody>
         </table>
+
       </div>
     </main>
     
     
+    
+    
+
     
     
   </div>
@@ -313,18 +317,29 @@
   {{	fullName	}}
   <p> follower: {{ followers }}</p>
 
+
+<table-lite
+    :columns="columns"
+    :rows="rows"
+></table-lite>
+
+
 </template>
 
 <script>
 import HelloWorld from './components/HelloWorld.vue'
+import TableLite from "vue3-table-lite";
 
 export default {
+	
 	name: 'App',
 	components: {
-	HelloWorld
+	HelloWorld,
+	TableLite
 	},
 	data(){
 	return {
+
 		followers: 100,
 		user: {
 			username: "ru ko",
@@ -338,7 +353,49 @@ export default {
 			{ id:2,  name:"B",price: 200},
 			{ id:3,  name:"C",price: 300},
 			{ id:4,  name:"D",price: 400}
-		]
+		],
+		columns: [
+{
+label: "ID",
+field: "id",
+width: "3%",
+sortable: true,
+isKey: true,
+},
+{
+label: "Name",
+field: "name",
+width: "10%",
+sortable: true,
+display: function (row) {
+return (
+'<a href="#" data-id="' + row.user_id + '" class="name-btn">' + row.name + "</button>"
+);
+},
+},
+{
+label: "Email",
+field: "email",
+width: "15%",
+sortable: true,
+},
+{
+label: "",
+field: "quick",
+width: "10%",
+display: function (row) {
+return (
+'<button type="button" data-id="' + row.user_id + '" class="quick-btn">Button</button>'
+);
+},
+},
+],
+rows: [
+{
+id: 1,
+name: "TEST1"
+}
+]
 	}
 	},
 	watch: {

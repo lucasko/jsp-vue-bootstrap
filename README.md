@@ -3,6 +3,10 @@
 npm install --save jquery
 npm install --save popper.js
 npm install bootstrap@4 --save
+
+npm install vue3-table-lite --save
+https://www.npmjs.com/package/vue3-table-lite
+
 ```
 
 
