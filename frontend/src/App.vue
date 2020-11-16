@@ -359,10 +359,10 @@ export default {
 	methods: {
 		async greet(){
 			alert('Hello !')
-			const res = await fetch("http://localhost:8080/api/product");
+			const res = await fetch("http://localhost:8080/api/json.jsp");
 			const data = await res.json();
 			this.data = data;
-			alert(data.name )
+			alert(data[0].name )
 		},
 		addFollower(){
 			this.followers ++
